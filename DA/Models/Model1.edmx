@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AdventureWorks2014Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'AdventureWorks2014.Person.vAdditionalContactInfo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vAdditionalContactInfo">
+          <Key>
+            <PropertyRef Name="BusinessEntityID" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="rowguid" />
+            <PropertyRef Name="ModifiedDate" />
+          </Key>
+          <Property Name="BusinessEntityID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TelephoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelephoneSpecialInstructions" Type="nvarchar(max)" />
+          <Property Name="Street" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="StateProvince" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryRegion" Type="nvarchar" MaxLength="50" />
+          <Property Name="HomeAddressSpecialInstructions" Type="nvarchar(max)" />
+          <Property Name="EMailAddress" Type="nvarchar" MaxLength="128" />
+          <Property Name="EMailSpecialInstructions" Type="nvarchar(max)" />
+          <Property Name="EMailTelephoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'AdventureWorks2014.Person.vStateProvinceCountryRegion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vStateProvinceCountryRegion">
+          <Key>
+            <PropertyRef Name="StateProvinceID" />
+            <PropertyRef Name="StateProvinceCode" />
+            <PropertyRef Name="IsOnlyStateProvinceFlag" />
+            <PropertyRef Name="StateProvinceName" />
+            <PropertyRef Name="TerritoryID" />
+            <PropertyRef Name="CountryRegionCode" />
+            <PropertyRef Name="CountryRegionName" />
+          </Key>
+          <Property Name="StateProvinceID" Type="int" Nullable="false" />
+          <Property Name="StateProvinceCode" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="IsOnlyStateProvinceFlag" Type="bit" Nullable="false" />
+          <Property Name="StateProvinceName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TerritoryID" Type="int" Nullable="false" />
+          <Property Name="CountryRegionCode" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="CountryRegionName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="AdventureWorks2014ModelStoreContainer">
+          <EntitySet Name="vAdditionalContactInfo" EntityType="Self.vAdditionalContactInfo" store:Type="Views" store:Schema="Person">
+            <DefiningQuery>SELECT 
+    [vAdditionalContactInfo].[BusinessEntityID] AS [BusinessEntityID], 
+    [vAdditionalContactInfo].[FirstName] AS [FirstName], 
+    [vAdditionalContactInfo].[MiddleName] AS [MiddleName], 
+    [vAdditionalContactInfo].[LastName] AS [LastName], 
+    [vAdditionalContactInfo].[TelephoneNumber] AS [TelephoneNumber], 
+    [vAdditionalContactInfo].[TelephoneSpecialInstructions] AS [TelephoneSpecialInstructions], 
+    [vAdditionalContactInfo].[Street] AS [Street], 
+    [vAdditionalContactInfo].[City] AS [City], 
+    [vAdditionalContactInfo].[StateProvince] AS [StateProvince], 
+    [vAdditionalContactInfo].[PostalCode] AS [PostalCode], 
+    [vAdditionalContactInfo].[CountryRegion] AS [CountryRegion], 
+    [vAdditionalContactInfo].[HomeAddressSpecialInstructions] AS [HomeAddressSpecialInstructions], 
+    [vAdditionalContactInfo].[EMailAddress] AS [EMailAddress], 
+    [vAdditionalContactInfo].[EMailSpecialInstructions] AS [EMailSpecialInstructions], 
+    [vAdditionalContactInfo].[EMailTelephoneNumber] AS [EMailTelephoneNumber], 
+    [vAdditionalContactInfo].[rowguid] AS [rowguid], 
+    [vAdditionalContactInfo].[ModifiedDate] AS [ModifiedDate]
+    FROM [Person].[vAdditionalContactInfo] AS [vAdditionalContactInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vStateProvinceCountryRegion" EntityType="Self.vStateProvinceCountryRegion" store:Type="Views" store:Schema="Person">
+            <DefiningQuery>SELECT 
+    [vStateProvinceCountryRegion].[StateProvinceID] AS [StateProvinceID], 
+    [vStateProvinceCountryRegion].[StateProvinceCode] AS [StateProvinceCode], 
+    [vStateProvinceCountryRegion].[IsOnlyStateProvinceFlag] AS [IsOnlyStateProvinceFlag], 
+    [vStateProvinceCountryRegion].[StateProvinceName] AS [StateProvinceName], 
+    [vStateProvinceCountryRegion].[TerritoryID] AS [TerritoryID], 
+    [vStateProvinceCountryRegion].[CountryRegionCode] AS [CountryRegionCode], 
+    [vStateProvinceCountryRegion].[CountryRegionName] AS [CountryRegionName]
+    FROM [Person].[vStateProvinceCountryRegion] AS [vStateProvinceCountryRegion]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdventureWorks2014Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="vAdditionalContactInfo">
+          <Key>
+            <PropertyRef Name="BusinessEntityID" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="rowguid" />
+            <PropertyRef Name="ModifiedDate" />
+          </Key>
+          <Property Name="BusinessEntityID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TelephoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneSpecialInstructions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryRegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HomeAddressSpecialInstructions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EMailAddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="EMailSpecialInstructions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EMailTelephoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rowguid" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="vStateProvinceCountryRegion">
+          <Key>
+            <PropertyRef Name="StateProvinceID" />
+            <PropertyRef Name="StateProvinceCode" />
+            <PropertyRef Name="IsOnlyStateProvinceFlag" />
+            <PropertyRef Name="StateProvinceName" />
+            <PropertyRef Name="TerritoryID" />
+            <PropertyRef Name="CountryRegionCode" />
+            <PropertyRef Name="CountryRegionName" />
+          </Key>
+          <Property Name="StateProvinceID" Type="Int32" Nullable="false" />
+          <Property Name="StateProvinceCode" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="IsOnlyStateProvinceFlag" Type="Boolean" Nullable="false" />
+          <Property Name="StateProvinceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TerritoryID" Type="Int32" Nullable="false" />
+          <Property Name="CountryRegionCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryRegionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="vAdditionalContactInfo" EntityType="Self.vAdditionalContactInfo" />
+          <EntitySet Name="vStateProvinceCountryRegion" EntityType="Self.vStateProvinceCountryRegion" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdventureWorks2014ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="vAdditionalContactInfo">
+            <EntityTypeMapping TypeName="AdventureWorks2014Model.vAdditionalContactInfo">
+              <MappingFragment StoreEntitySet="vAdditionalContactInfo">
+                <ScalarProperty Name="BusinessEntityID" ColumnName="BusinessEntityID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="TelephoneNumber" ColumnName="TelephoneNumber" />
+                <ScalarProperty Name="TelephoneSpecialInstructions" ColumnName="TelephoneSpecialInstructions" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="StateProvince" ColumnName="StateProvince" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="CountryRegion" ColumnName="CountryRegion" />
+                <ScalarProperty Name="HomeAddressSpecialInstructions" ColumnName="HomeAddressSpecialInstructions" />
+                <ScalarProperty Name="EMailAddress" ColumnName="EMailAddress" />
+                <ScalarProperty Name="EMailSpecialInstructions" ColumnName="EMailSpecialInstructions" />
+                <ScalarProperty Name="EMailTelephoneNumber" ColumnName="EMailTelephoneNumber" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vStateProvinceCountryRegion">
+            <EntityTypeMapping TypeName="AdventureWorks2014Model.vStateProvinceCountryRegion">
+              <MappingFragment StoreEntitySet="vStateProvinceCountryRegion">
+                <ScalarProperty Name="StateProvinceID" ColumnName="StateProvinceID" />
+                <ScalarProperty Name="StateProvinceCode" ColumnName="StateProvinceCode" />
+                <ScalarProperty Name="IsOnlyStateProvinceFlag" ColumnName="IsOnlyStateProvinceFlag" />
+                <ScalarProperty Name="StateProvinceName" ColumnName="StateProvinceName" />
+                <ScalarProperty Name="TerritoryID" ColumnName="TerritoryID" />
+                <ScalarProperty Name="CountryRegionCode" ColumnName="CountryRegionCode" />
+                <ScalarProperty Name="CountryRegionName" ColumnName="CountryRegionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
